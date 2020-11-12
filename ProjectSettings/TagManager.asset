@@ -12,6 +12,7 @@ TagManager:
   - List
   - CenterPoint
   - SpawnRoom
+  - Enemy
   layers:
   - Default
   - TransparentFX

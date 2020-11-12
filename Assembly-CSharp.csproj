@@ -56,11 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\RoomGenerator.cs" />
-    <Compile Include="Assets\Scripts\DungeonCreation.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\RoomList.cs" />
-    <Compile Include="Assets\Scripts\RoomAspects.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
