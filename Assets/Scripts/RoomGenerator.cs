@@ -8,16 +8,24 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-    private int maxRoomAmnt = 7;
     private int level = 1;
-    private int roomCount = 0;
-    private bool[] edges;
+    private GameObject gameManager;
+    private GameManager gameManagerScript;
     public GameObject ground;
+    private bool[] edges;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        edges = new bool[4];
+        gameManager = GameObject.Find("GameManager");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
+
+        edges = new bool[4] {false, false, false, false};
+        if(gameManagerScript.roomCount < 10)
+        {
+            roomCreation(ground);
+        }
     }
 
 
@@ -38,14 +46,28 @@ public class RoomGenerator : MonoBehaviour
     void roomCreation(GameObject room)
     {
         edgeChance();
-        Instantiate(ground);
 
-        for(int x = 0; x < 4; x++)
+        if (gameManagerScript.roomCount < 10)
         {
-            if (edges[x] == true)
+            if (edges[0] == true)
             {
-
-                Instantiate(ground, new UnityEngine.Vector3(0,0,1));
+                Instantiate(room, new UnityEngine.Vector3(0, 0, 40), UnityEngine.Quaternion.identity);
+                gameManagerScript.roomCount++;
+            }
+            if (edges[1] == true)
+            {
+                Instantiate(room, new UnityEngine.Vector3(40, 0, 0), UnityEngine.Quaternion.identity);
+                gameManagerScript.roomCount++;
+            }
+            if (edges[2] == true)
+            {
+                Instantiate(ground, new UnityEngine.Vector3(0, 0, -40), UnityEngine.Quaternion.identity);
+                gameManagerScript.roomCount++;
+            }
+            if (edges[3] == true)
+            {
+                Instantiate(room, new UnityEngine.Vector3(-40, 0, 0), UnityEngine.Quaternion.identity);
+                gameManagerScript.roomCount++;
             }
         }
 
